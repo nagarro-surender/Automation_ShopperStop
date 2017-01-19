@@ -12,7 +12,6 @@
 
 
 
-
 <!-- Header Test Cases -->
 			<class
 				name="testCases.SS_Header_Private_Verify_WishlistAlert_Functionality" />
@@ -221,7 +220,6 @@
 <class name="testCases.SS_CheckOut_LoginAtCheckout_CheckAddress_PinCode" />
 <class name="testCases.SS_CheckOut_LoginAtCheckout_CheckAddress_State" />
 <class name="testCases.SS_CheckOut_LoginAtCheckout_CheckAddress_DefaultAddress" />
-		
 		
 			
 	
