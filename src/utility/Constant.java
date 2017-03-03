@@ -4,8 +4,8 @@ public class Constant {
 
 	//public static final String URL ="https://uat2.shopper-stop.in/";
 	
-	public static final String URL ="https://www.shoppersstop.com/";
-
+	//public static final String URL ="https://www.shoppersstop.com/";
+	public static final String URL ="https://test1.shopper-stop.in/";
 	
 
 	// This need to be changed as per project location

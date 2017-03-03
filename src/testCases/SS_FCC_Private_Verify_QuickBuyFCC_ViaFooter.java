@@ -9,9 +9,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
 import pageObjects.BaseClass;
+import pageObjects.Cart_Page;
 import pageObjects.Checkout_Page;
 import pageObjects.Home_Page;
+import pageObjects.MiniCart_Page;
 import appModules.CheckOut_Action;
 import appModules.FCC_Action;
 import appModules.Login_App;
@@ -96,14 +99,26 @@ public class SS_FCC_Private_Verify_QuickBuyFCC_ViaFooter {
 		FCC_Action.FCC_Verify_QuickBuyFCC_ViaFooterLink(iTestCaseRow);
 		Log.info("FCC added to cart successfully");
 		
-		Utils.verifyElement(Checkout_Page.TopNavigation.CheckOutText());
-		Log.info("User successfully reached to Checkout page");
+		//Utils.verifyElement(Checkout_Page.TopNavigation.CheckOutText());
+		//Log.info("User successfully reached to Checkout page");
 
 		CheckOut_Action.ProceedwithNewAddress(iTestCaseRow);
 		Utils.verifyElement(Checkout_Page.Paymentinfo.PaymentClass());
 		Log.info("Payment information tab is visible");
 		
-		CheckOut_Action.PaymentOption(iTestCaseRow);
+		Thread.sleep(5000);
+
+		
+        
+		//CheckOut_Action.PaymentOption(iTestCaseRow);
+		
+		Home_Page.headerSoppersStopLogocheckout().click();
+		Thread.sleep(2000);
+		Home_Page.headerMiniCartIcon().click();
+		Thread.sleep(2000);
+        Home_Page.headerMiniCartIconclose().click();
+		
+		//CheckOut_Action.PaymentOption(iTestCaseRow);
 		
 		if(BaseClass.bResult==true){
 			Log.error("Verification for adding FCC to bag from Footer Link successfull");

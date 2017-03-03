@@ -9,6 +9,7 @@ import org.testng.Reporter;
 import pageObjects.BaseClass;
 import pageObjects.Cart_Page;
 import pageObjects.Checkout_Page;
+import pageObjects.Home_Page;
 import pageObjects.MyAccount_Page;
 import utility.Constant;
 import utility.ExcelUtils;
@@ -96,6 +97,33 @@ public class CheckOut_Action {
 		}
 	}
 
+	public static void ProceedwithNewAddressEmptyfield(int iTestCaseRow) throws Exception {
+
+	      System.out.println(Checkout_Page.DeliveryAddress.firstName().getAttribute("Value"));
+		
+			
+			try {
+
+				if ((Checkout_Page.DeliveryAddress.firstName().getAttribute("Value").startsWith("A"))) {
+					BaseClass.errorValidation += "first Name field is not empty \n";
+				}
+
+		         if ((Checkout_Page.DeliveryAddress.lastName().getAttribute("Value").startsWith("G"))) {
+						BaseClass.errorValidation += "last Name field is not empty \n";
+					}
+
+				} catch (Exception e1) {
+					Log.error(e1.getMessage());
+					throw e1;
+					
+				}
+			
+			//Checkout_Page.DeliveryAddress.TermsandConditionsCheckBox().sendKeys(Keys.PAGE_DOWN);
+			//Thread.sleep(1000);
+			//Checkout_Page.DeliveryAddress.TermsandConditionsCheckBox().click();
+			//Log.info("Terms and conditions option is selected successfully")
+
+	}
 	public static void ProceedwithNewAddressNoFName(int iTestCaseRow) throws Exception {
 
 		try {
@@ -107,7 +135,9 @@ public class CheckOut_Action {
 			//String firstName = ExcelUtils.getCellData(iTestCaseRow, Constant.firstName);
 			//Checkout_Page.DeliveryAddress.firstName().sendKeys(firstName);
 			//Log.info("First name is entered successfully");
-
+			Checkout_Page.DeliveryAddress.firstName().clear();
+			Checkout_Page.DeliveryAddress.lastName().clear();
+			
 			String lastName = ExcelUtils.getCellData(iTestCaseRow, Constant.lastName);
 			Checkout_Page.DeliveryAddress.lastName().sendKeys(lastName);
 			Log.info("Last name is entered successfully");
@@ -200,6 +230,9 @@ public class CheckOut_Action {
 				Log.info("Add new address button is clicked successfully");
 			}
 
+			Checkout_Page.DeliveryAddress.firstName().clear();
+			Checkout_Page.DeliveryAddress.lastName().clear();
+			
 			String firstName = ExcelUtils.getCellData(iTestCaseRow, Constant.firstName);
 			Checkout_Page.DeliveryAddress.firstName().sendKeys(firstName);
 			Log.info("First name is entered successfully");
@@ -291,6 +324,8 @@ public class CheckOut_Action {
 	}
 
 	public static void ProceedwithNewAddressAllFieldEmpty(int iTestCaseRow) throws Exception {
+		
+		
 
 		try {
 			if (Checkout_Page.DeliveryAddress.DeliveryAddressNew().getAttribute("style").contains("none")) {
@@ -298,9 +333,10 @@ public class CheckOut_Action {
 				Log.info("Add new address button is clicked successfully");
 			}
 			
+			Checkout_Page.DeliveryAddress.SaveandContinueBtn().click();
 		
 			try {
-				Checkout_Page.DeliveryAddress.SaveandContinueBtn().click();
+				
 					Log.info("Save and continue button clicked successfully");
 					Utils.mouseHover(Checkout_Page.DeliveryAddress.firstName());
 					
@@ -315,7 +351,7 @@ public class CheckOut_Action {
 			
        
 	    try {
-			Checkout_Page.DeliveryAddress.SaveandContinueBtn().click();
+			
 				Log.info("Save and continue button clicked successfully");
 				Utils.mouseHover(Checkout_Page.DeliveryAddress.lastName());
 				
@@ -331,7 +367,7 @@ public class CheckOut_Action {
 	
 		
 		try {
-			Checkout_Page.DeliveryAddress.SaveandContinueBtn().click();
+			
 				Log.info("Save and continue button clicked successfully");
 				Utils.mouseHover(Checkout_Page.DeliveryAddress.phone());
 				
@@ -345,7 +381,7 @@ public class CheckOut_Action {
 			}
 		
 		try {
-			Checkout_Page.DeliveryAddress.SaveandContinueBtn().click();
+			
 				Log.info("Save and continue button clicked successfully");
 				Utils.mouseHover(Checkout_Page.DeliveryAddress.address1());
 				
@@ -359,7 +395,7 @@ public class CheckOut_Action {
 			}
 		
 		try {
-			Checkout_Page.DeliveryAddress.SaveandContinueBtn().click();
+			
 				Log.info("Save and continue button clicked successfully");
 				Utils.mouseHover(Checkout_Page.DeliveryAddress.Postcode());
 				
@@ -373,7 +409,7 @@ public class CheckOut_Action {
 			}
 		
 		try {
-			Checkout_Page.DeliveryAddress.SaveandContinueBtn().click();
+		
 				Log.info("Save and continue button clicked successfully");
 				Utils.mouseHover(Checkout_Page.DeliveryAddress.city());
 				
@@ -424,6 +460,274 @@ public class CheckOut_Action {
 		}
 	}
 
+public static void ProceedwithNewAddressAllFieldVerify(int iTestCaseRow) throws Exception {
+		
+		
+
+		try {
+			if (Checkout_Page.DeliveryAddress.DeliveryAddressNew().getAttribute("style").contains("none")) {
+				Checkout_Page.DeliveryAddress.AddNewAddressBtn().click();
+				Log.info("Add new address button is clicked successfully");
+			}
+			
+			Checkout_Page.DeliveryAddress.SaveandContinueBtn().click();
+		
+			try {
+				
+					Log.info("Save and continue button clicked successfully");
+					Utils.mouseHover(Checkout_Page.DeliveryAddress.firstName());
+					
+					if (!(Checkout_Page.DeliveryAddress.firstName().getAttribute("title").equals("Please enter your firstname"))) {
+						BaseClass.errorValidation += "First Name field not highlighted on page. \n";
+					}
+				} catch (Exception e) {
+					Log.error("Exception in Class Cart_Action | Method ProceedwithNewAddressAllFieldEmpty");
+					Log.error(e.getMessage());
+					throw e;
+				}
+			
+       
+	    try {
+			
+				Log.info("Save and continue button clicked successfully");
+				Utils.mouseHover(Checkout_Page.DeliveryAddress.lastName());
+				
+				if (!(Checkout_Page.DeliveryAddress.lastName().getAttribute("title").equals("Please enter your lastname"))) {
+					BaseClass.errorValidation += "Last Name field not highlighted on page. \n";
+				}
+			} catch (Exception e) {
+				Log.error("Exception in Class Cart_Action | Method ProceedwithNewAddressAllFieldEmpty");
+				Log.error(e.getMessage());
+				throw e;
+			}
+	    
+	
+		
+		try {
+			
+				Log.info("Save and continue button clicked successfully");
+				Utils.mouseHover(Checkout_Page.DeliveryAddress.phone());
+				
+				if (!(Checkout_Page.DeliveryAddress.phone().getAttribute("title").equals("Please provide a number"))) {
+					BaseClass.errorValidation += "Phone No field not highlighted on page. \n";
+				}
+			} catch (Exception e) {
+				Log.error("Exception in Class Cart_Action | Method ProceedwithNewAddressAllFieldEmpty");
+				Log.error(e.getMessage());
+				throw e;
+			}
+		
+		try {
+			
+				Log.info("Save and continue button clicked successfully");
+				Utils.mouseHover(Checkout_Page.DeliveryAddress.address1());
+				
+				if (!(Checkout_Page.DeliveryAddress.address1().getAttribute("title").equals("Please enter your Address"))) {
+					BaseClass.errorValidation += "Address1 field not highlighted on page. \n";
+				}
+			} catch (Exception e) {
+				Log.error("Exception in Class Cart_Action | Method ProceedwithNewAddressAllFieldEmpty");
+				Log.error(e.getMessage());
+				throw e;
+			}
+		
+		try {
+			
+				Log.info("Save and continue button clicked successfully");
+				Utils.mouseHover(Checkout_Page.DeliveryAddress.Postcode());
+				
+				if (!(Checkout_Page.DeliveryAddress.Postcode().getAttribute("title").equals("Please enter valid pincode"))) {
+					BaseClass.errorValidation += "Pin Code field not highlighted on page. \n";
+				}
+			} catch (Exception e) {
+				Log.error("Exception in Class Cart_Action | Method ProceedwithNewAddressAllFieldEmpty");
+				Log.error(e.getMessage());
+				throw e;
+			}
+		
+		try {
+		
+				Log.info("Save and continue button clicked successfully");
+				Utils.mouseHover(Checkout_Page.DeliveryAddress.city());
+				
+				if (!(Checkout_Page.DeliveryAddress.city().getAttribute("title").equals("Please enter your city"))) {
+					BaseClass.errorValidation += "City field not highlighted on page. \n";
+				}
+			} catch (Exception e) {
+				Log.error("Exception in Class Cart_Action | Method ProceedwithNewAddressAllFieldEmpty");
+				Log.error(e.getMessage());
+				throw e;
+			}
+		
+		try {
+			
+			Checkout_Page.DeliveryAddress.firstName().clear();
+			Checkout_Page.DeliveryAddress.lastName().clear();
+			
+			String lastName = ExcelUtils.getCellData(iTestCaseRow, Constant.lastName);
+			Checkout_Page.DeliveryAddress.lastName().sendKeys(lastName);
+			Log.info("Last name is entered successfully");
+
+			String phone = ExcelUtils.getCellData(iTestCaseRow, Constant.mobileNumber);
+			Checkout_Page.DeliveryAddress.phone().sendKeys(phone);
+			Log.info("Phone number is entered successfully");
+
+			String address1 = ExcelUtils.getCellData(iTestCaseRow, Constant.address);
+			Checkout_Page.DeliveryAddress.address1().sendKeys(address1);
+			Log.info("Address 1 is entered successfully");
+
+			String address2 = ExcelUtils.getCellData(iTestCaseRow, Constant.landmark);
+			Checkout_Page.DeliveryAddress.address2().sendKeys(address2);
+			Log.info("Address 2 is entered successfully");
+
+			String postcode = ExcelUtils.getCellData(iTestCaseRow, Constant.postCode);
+			Checkout_Page.DeliveryAddress.Postcode().sendKeys(postcode);
+			Log.info("Postcode is entered successfully");
+			
+			Checkout_Page.DeliveryAddress.city().click();
+			Thread.sleep(5000);
+			
+			try {
+				Checkout_Page.DeliveryAddress.SaveandContinueBtn().click();
+				Log.info("Save and continue button clicked successfully");
+				if (!(Cart_Page.FirstNameFieldAlert().getText().equals("Please enter your firstname"))) {
+					BaseClass.errorValidation += "First Name alert not present on page. \n";
+				}
+			} catch (Exception e) {
+				Log.error("Exception in Class ProceedwithNewAddressAllFieldVerify| Method ProceedwithNewAddressAllFieldVerify");
+				Log.error(e.getMessage());
+				throw e;
+			}
+			
+			Thread.sleep(5000);
+			try {
+				
+				String firstName = ExcelUtils.getCellData(iTestCaseRow, Constant.alternativeFirstName);
+				Checkout_Page.DeliveryAddress.firstName().sendKeys(firstName);
+				Log.info("First name is entered successfully");
+				Checkout_Page.DeliveryAddress.SaveandContinueBtn().click();
+				if (!(Cart_Page.FirstNameFieldAlert().getText().equals("Enter Valid Name"))) {
+					BaseClass.errorValidation += "'Please enter the Valid First Name!' - First Name alert not present on page. \n";
+				}
+			} catch (Exception e) {
+				Log.error("Exception in ProceedwithNewAddressAllFieldVerify | Method ProceedwithNewAddressAllFieldVerify");
+				Log.error(e.getMessage());
+				throw e;
+			}
+			
+			Thread.sleep(5000);
+			try {
+				String firstName = ExcelUtils.getCellData(iTestCaseRow, Constant.firstName);
+				Checkout_Page.DeliveryAddress.firstName().clear();
+				Checkout_Page.DeliveryAddress.firstName().sendKeys(firstName);
+				Log.info("First name is entered successfully");
+				Checkout_Page.DeliveryAddress.SaveandContinueBtn().click();
+			} catch (Exception e) {
+				Log.error("Exception in ProceedwithNewAddressAllFieldVerify | Method ProceedwithNewAddressAllFieldVerify");
+				Log.error(e.getMessage());
+				throw e;
+			}
+
+			Thread.sleep(5000);
+		
+		
+		      } catch (Exception e) {
+			Log.error("Exception in Class CheckOut_Action | Method ProceedwithNewAddressAllFieldEmpty");
+			Log.error("Address is not entered successfully");
+			throw e;
+		      }
+		
+		Checkout_Page.Paymentinfo.EditAddressBtn_checkout().click();
+		
+		try{
+			
+			Checkout_Page.DeliveryAddress.firstName().clear();
+			Checkout_Page.DeliveryAddress.lastName().clear();
+			Checkout_Page.DeliveryAddress.phone().clear();
+			Checkout_Page.DeliveryAddress.address1().clear();
+			Checkout_Page.DeliveryAddress.address2().clear();
+			Checkout_Page.DeliveryAddress.Postcode().clear();
+		String firstName = ExcelUtils.getCellData(iTestCaseRow, Constant.firstName);
+		Checkout_Page.DeliveryAddress.firstName().sendKeys(firstName);
+		Log.info("First name is entered successfully");
+
+		
+
+		String phone = ExcelUtils.getCellData(iTestCaseRow, Constant.mobileNumber);
+		Checkout_Page.DeliveryAddress.phone().sendKeys(phone);
+		Log.info("Phone number is entered successfully");
+
+		String address1 = ExcelUtils.getCellData(iTestCaseRow, Constant.address);
+		Checkout_Page.DeliveryAddress.address1().sendKeys(address1);
+		Log.info("Address 1 is entered successfully");
+
+		String address2 = ExcelUtils.getCellData(iTestCaseRow, Constant.landmark);
+		Checkout_Page.DeliveryAddress.address2().sendKeys(address2);
+		Log.info("Address 2 is entered successfully");
+
+		String postcode = ExcelUtils.getCellData(iTestCaseRow, Constant.postCode);
+		Checkout_Page.DeliveryAddress.Postcode().sendKeys(postcode);
+		Log.info("Postcode is entered successfully");
+		
+		Checkout_Page.DeliveryAddress.city().click();
+		Thread.sleep(5000);
+		
+		try {
+			Checkout_Page.DeliveryAddress.SaveandContinueBtn().click();
+			Log.info("Save and continue button clicked successfully");
+			
+			if (!(Cart_Page.FirstNameFieldAlert().getText().equals("Please enter your lastname"))) {
+				BaseClass.errorValidation += "Last name not present on page. \n";
+			}
+		} catch (Exception e) {
+			Log.error("Exception in Class Cart_Action | Method Verify_Private_Cart_Page_ApplyCoupan");
+			Log.error(e.getMessage());
+			throw e;
+		}
+		Thread.sleep(5000);
+		
+	
+		try {
+			
+			String LastName = ExcelUtils.getCellData(iTestCaseRow, Constant.alternativeLastName);
+			Checkout_Page.DeliveryAddress.lastName().sendKeys(LastName);
+			Log.info("Last name is entered successfully");
+			Checkout_Page.DeliveryAddress.SaveandContinueBtn().click();
+			if (!Cart_Page.FirstNameFieldAlert().getText().equals("Enter Valid Name")) {
+				BaseClass.errorValidation += "'Please enter the Valid Last Name!' - Last Name alert not present on page. \n";
+			}
+		} catch (Exception e) {
+			Log.error("Exception in Class Cart_Action | Method Verify_Private_Cart_Page_ApplyCoupan");
+			Log.error(e.getMessage());
+			throw e;
+		}
+      try {
+			
+			String LastName = ExcelUtils.getCellData(iTestCaseRow, Constant.lastName);
+			Checkout_Page.DeliveryAddress.lastName().clear();
+			Checkout_Page.DeliveryAddress.lastName().sendKeys(LastName);
+			Log.info("First name is entered successfully");
+			Checkout_Page.DeliveryAddress.SaveandContinueBtn().click();
+			
+		} catch (Exception e) {
+			Log.error("Exception in Class Cart_Action | Method Verify_Private_Cart_Page_ApplyCoupan");
+			Log.error(e.getMessage());
+			throw e;
+		}
+
+		 } catch (Exception e) {
+				Log.error("Exception in Class CheckOut_Action | Method ProceedwithNewAddressAllFieldEmpty");
+				Log.error("Address is not entered successfully");
+				throw e;
+			      }
+		
+		} catch (Exception e) {
+			Log.error("Exception in Class CheckOut_Action | Method ProceedwithNewAddressAllFieldEmpty");
+			Log.error("Address is not entered successfully");
+			throw e;
+		}
+	}
+	
 	public static void ProceedwithNewAddressPhoneNo(int iTestCaseRow) throws Exception {
 
 		try {
@@ -1040,6 +1344,8 @@ public class CheckOut_Action {
 		}
 
 	}
+	
+	
 
 	public static void PaymentOption(int iTestCaseRow) throws Exception {
 
@@ -1069,9 +1375,21 @@ public class CheckOut_Action {
 
 				Log.info("CreditCard details entered successfully");
 
-				// Checkout_Page.Paymentinfo.CreditCard_PlaceOrderBtn().click();
+				Checkout_Page.Paymentinfo.CreditCard_PlaceOrderBtn().click();
 
 			}
+		if (paymentMode.equals("Wallets")) {
+				Checkout_Page.Paymentinfo.WalletsOption().click();
+				Log.info("Wallets option is clicked successfully");
+			    String WalletName = ExcelUtils.getCellData(iTestCaseRow, Constant.bank);
+			    Utils.verifyElement(Checkout_Page.Paymentinfo.Wallets_SelectFromVisibleList(WalletName));
+			    //Checkout_Page.Paymentinfo.Wallets_SelectFromVisibleList(WalletName).sendKeys(Keys.ENTER);
+				Checkout_Page.Paymentinfo.Wallets_SelectFromVisibleList(WalletName).click();
+				Log.info("Wallet selected from the options displayed");
+				Checkout_Page.Paymentinfo.Wallet_PlaceOrderBtn().click();
+			
+
+		}	
 
 			if (paymentMode.equals("DebitCard")) {
 
@@ -1108,6 +1426,7 @@ public class CheckOut_Action {
 
 				if (bankSelection.equals("SelectBankFromOptionList")) {
 					String bankName = ExcelUtils.getCellData(iTestCaseRow, Constant.bank);
+					Utils.scrollingToPageElementAdvanced(Checkout_Page.Paymentinfo.NetBanking_SelectFromVisibleList(bankName));
 					Checkout_Page.Paymentinfo.NetBanking_SelectFromVisibleList(bankName).click();
 					Log.info("Bank name selected from the options displayed");
 				} else if (bankSelection.equals("SelectBankFromDropdown")) {
@@ -1138,6 +1457,93 @@ public class CheckOut_Action {
 			throw e;
 		}
 	}
+	
+	
+	public static void PaymentOption_Wallets(int iTestCaseRow) throws Exception{
+		
+		Checkout_Page.Paymentinfo.WalletsOption().click();
+		Log.info("Wallets option is clicked successfully");
+		 
+		try{
+			  String WalletName = "bg-image-wallet freecharge";
+			   Utils.verifyElement(Checkout_Page.Paymentinfo.Wallets_SelectFromVisibleList(WalletName));
+			    //Checkout_Page.Paymentinfo.Wallets_SelectFromVisibleList(WalletName).sendKeys(Keys.ENTER);
+				Checkout_Page.Paymentinfo.Wallets_SelectFromVisibleList(WalletName).click();
+				Log.info("Freechanre Wallet selected from the options displayed");
+				
+		}catch (Exception e) {
+			Log.error("Exception in Class PaymentOption_Wallets | Method PaymentOption_Wallets");
+			Log.error("Issue with FreeCharge selection process");
+			throw e;
+		}
+			
+		try{
+			  String WalletName = "bg-image-wallet jiomoney";
+			   Utils.verifyElement(Checkout_Page.Paymentinfo.Wallets_SelectFromVisibleList(WalletName));
+			    //Checkout_Page.Paymentinfo.Wallets_SelectFromVisibleList(WalletName).sendKeys(Keys.ENTER);
+				Checkout_Page.Paymentinfo.Wallets_SelectFromVisibleList(WalletName).click();
+				Log.info("Freechanre Wallet selected from the options displayed");
+				
+		}catch (Exception e) {
+			Log.error("Exception in Class PaymentOption_Wallets | Method PaymentOption_Wallets");
+			Log.error("Issue with FreeCharge selection process");
+			throw e;
+		}
+		try{
+			  String WalletName = "bg-image-wallet mobikwik";
+			   Utils.verifyElement(Checkout_Page.Paymentinfo.Wallets_SelectFromVisibleList(WalletName));
+			    //Checkout_Page.Paymentinfo.Wallets_SelectFromVisibleList(WalletName).sendKeys(Keys.ENTER);
+				Checkout_Page.Paymentinfo.Wallets_SelectFromVisibleList(WalletName).click();
+				Log.info("Freechanre Wallet selected from the options displayed");
+				
+		}catch (Exception e) {
+			Log.error("Exception in Class PaymentOption_Wallets | Method PaymentOption_Wallets");
+			Log.error("Issue with FreeCharge selection process");
+			throw e;
+		}
+
+		try{
+			  String WalletName = "bg-image-wallet oxigen";
+			   Utils.verifyElement(Checkout_Page.Paymentinfo.Wallets_SelectFromVisibleList(WalletName));
+			    //Checkout_Page.Paymentinfo.Wallets_SelectFromVisibleList(WalletName).sendKeys(Keys.ENTER);
+				Checkout_Page.Paymentinfo.Wallets_SelectFromVisibleList(WalletName).click();
+				Log.info("Freechanre Wallet selected from the options displayed");
+				
+		}catch (Exception e) {
+			Log.error("Exception in Class PaymentOption_Wallets | Method PaymentOption_Wallets");
+			Log.error("Issue with FreeCharge selection process");
+			throw e;
+		}
+
+		try{
+			  String WalletName = "bg-image-wallet paytm";
+			   Utils.verifyElement(Checkout_Page.Paymentinfo.Wallets_SelectFromVisibleList(WalletName));
+			    //Checkout_Page.Paymentinfo.Wallets_SelectFromVisibleList(WalletName).sendKeys(Keys.ENTER);
+				Checkout_Page.Paymentinfo.Wallets_SelectFromVisibleList(WalletName).click();
+				Log.info("Freechanre Wallet selected from the options displayed");
+				
+		}catch (Exception e) {
+			Log.error("Exception in Class PaymentOption_Wallets | Method PaymentOption_Wallets");
+			Log.error("Issue with FreeCharge selection process");
+			throw e;
+		}
+
+		try{
+			  String WalletName = "bg-image-wallet buddy";
+			   Utils.verifyElement(Checkout_Page.Paymentinfo.Wallets_SelectFromVisibleList(WalletName));
+			    //Checkout_Page.Paymentinfo.Wallets_SelectFromVisibleList(WalletName).sendKeys(Keys.ENTER);
+				Checkout_Page.Paymentinfo.Wallets_SelectFromVisibleList(WalletName).click();
+				Log.info("Freechanre Wallet selected from the options displayed");
+				
+		}catch (Exception e) {
+			Log.error("Exception in Class PaymentOption_Wallets | Method PaymentOption_Wallets");
+			Log.error("Issue with FreeCharge selection process");
+			throw e;
+		}
+	
+		}
+	
+
 
 	public static void RegisterAtCheckout(int iTestCaseRow) throws Exception {
 

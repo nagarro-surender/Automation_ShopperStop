@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
 import pageObjects.BaseClass;
 import appModules.HomePage_Action;
 import utility.Constant;
@@ -82,10 +83,10 @@ public class SS_Header_Public_Verify_TrackOrder_Page_Functionality {
 	}
 
 	@AfterMethod
-	public void afterMethod() {
+	public void afterMethod() throws InterruptedException {
 
 		Log.endTestCase(sTestCaseName);
-
+        Thread.sleep(2000);
 		Driver.close();
 		Driver.quit();
 	}

@@ -8,9 +8,11 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
 import pageObjects.BaseClass;
 import pageObjects.Cart_Page;
 import pageObjects.Checkout_Page;
+import pageObjects.Home_Page;
 import pageObjects.MiniCart_Page;
 import appModules.CheckOut_Action;
 import appModules.FCC_Action;
@@ -105,15 +107,21 @@ public class SS_FCC_Private_Verify_AddToBagFCC_ViaHeader {
 			Cart_Page.CheckoutButton().click();
 			Log.info("Checkout button on Cart Page clicked successfully");
 
-			Utils.verifyElement(Checkout_Page.TopNavigation.CheckOutText());
-			Log.info("User successfully reached to Checkout page");
+			//Utils.verifyElement(Checkout_Page.TopNavigation.CheckOutText());
+			//Log.info("User successfully reached to Checkout page");
 
 			CheckOut_Action.ProceedwithNewAddress(iTestCaseRow);
 			Utils.verifyElement(Checkout_Page.Paymentinfo.PaymentClass());
 			Log.info("Payment information tab is visible");
-
-			CheckOut_Action.PaymentOption(iTestCaseRow);
-
+			
+            
+			//CheckOut_Action.PaymentOption(iTestCaseRow);
+			
+			Home_Page.headerSoppersStopLogocheckout().click();
+			Thread.sleep(2000);
+			Home_Page.headerMiniCartIcon().click();
+			Thread.sleep(2000);
+            Home_Page.headerMiniCartIconclose().click();
 			if (BaseClass.bResult == true) {
 				Log.info("Forget password functionality is working fine");
 				ExcelUtils.setCellData("Pass", iTestCaseRow, Constant.result);

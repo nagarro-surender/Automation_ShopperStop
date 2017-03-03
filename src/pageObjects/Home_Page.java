@@ -835,6 +835,25 @@ public class Home_Page extends BaseClass {
 		return element;
 
 	}
+	
+	public static WebElement headerSoppersStopLogocheckout() throws Exception {
+
+		try {
+			Log.info("Locating headerSoppersStopLogo element");
+			element = Driver.findElement(By.xpath(
+					"//a[@href='/']"));
+
+			Log.info("Shoppers Stop logo is found on the Header on Home Page");
+
+		} catch (Exception e) {
+			Log.error("Exception in Class Home_Page | Method headerSoppersStopLogo");
+			Log.error("Shoppers Stop logo is not found on the Header on Home Page");
+			throw e;
+		}
+
+		return element;
+
+	}
 
 	public static WebElement headerNotificationIcon() throws Exception {
 
@@ -898,6 +917,24 @@ public class Home_Page extends BaseClass {
 			element = Driver.findElement(By.xpath(".//*[@id='minicart_id']"));
 
 			Log.info("Notification icon is found on the Header on Home Page");
+
+		} catch (Exception e) {
+			Log.error("Exception in Class Home_Page | Method headerMiniCartIcon");
+			Log.error("Notification icon is not found on the Header on Home Page");
+			throw e;
+		}
+
+		return element;
+
+	}
+	
+	public static WebElement headerMiniCartIconclose() throws Exception {
+
+		try {
+			Log.info("Locating headerMiniCartIcon element");
+			element = Driver.findElement(By.xpath("//*[@id='removeEntry_0']"));
+
+			Log.info("close button found on the Header on Home Page");
 
 		} catch (Exception e) {
 			Log.error("Exception in Class Home_Page | Method headerMiniCartIcon");

@@ -13,7 +13,6 @@ import pageObjects.ProductDetails_Page;
 import pageObjects.ProductListing_Page;
 import appModules.Cart_Action;
 import appModules.HomePage_Action;
-import appModules.Login_App;
 import appModules.PDP_Action;
 import utility.Constant;
 import utility.ExcelUtils;
@@ -24,14 +23,12 @@ import utility.JyperionListener;
 
 /**
  * 
- * <h2 style="text-align:center;">SS_CartPage_Private_Verify_ShopingCart_Details</h2>
- * <p style="font-size:19px"><b>Description -</b>This Test Case verifies Mini Cart pop up details for a registered user.</p>
+ * <h2 style="text-align:center;">SS_CartPage_Public_Verify_Edit_Cart_Functionality</h2>
+ * <p style="font-size:19px"><b>Description -</b>This Test Case verifies Edit/Update Cart functionality for a guest user.</p>
  * <TABLE width="100%" border="1">
  * <caption style="font-size:17px">List of columns used from excel file</caption>
  * <tr><th>Parameters</th><th>Description</th></tr>
  * <tr><td>browser</td><td>Browser name in which test execution starts</td></tr>
- * <tr><td>emailId</td><td>User email Id</td></tr>
- * <tr><td>password</td><td>Use password</td></tr> 
  * <tr><td>productCategory</td><td>Product category available on main menu</td></tr>
  * <tr><td>productSubCategory</td><td>Product sub category available under the main menu</td></tr>
  * </table>
@@ -40,17 +37,18 @@ import utility.JyperionListener;
  * 
  */ 
 @Listeners(JyperionListener.class)
-public class SS_CartPage_Private_Verify_ShopingCart_Details {
+public class SS_CartPage_Public_Verify_Edit_Cart_Sameproduct_Functionality {
 
 	public WebDriver Driver;
 	private String sTestCaseName;
 	private int iTestCaseRow;
 
 	@BeforeSuite
-	public void setSnapShotFolder() throws Exception{
+	public void setSnapShotFolder() throws Exception {
 		Utils.setSnapshotFolder();
-		
+
 	}
+
 	@BeforeMethod
 	public void BeforeMethod() throws Exception {
 		DOMConfigurator.configure("log4j.xml");
@@ -68,25 +66,30 @@ public class SS_CartPage_Private_Verify_ShopingCart_Details {
 	@Test
 	public void main() throws Exception {
 		try {
-			Login_App.execute(iTestCaseRow);
-			Log.info("Log in successfull for Registered user");
 			HomePage_Action.selectProductCategoryfromMenu(iTestCaseRow);
 			Log.info("Product selected from Main Menu on header");
 			ProductListing_Page.product().click();
 			Log.info("Product clicked on PLP");
 			PDP_Action.product_selectSize(ProductDetails_Page.Product.size_variant_buttonlist());
-			Utils.mouseHover(ProductDetails_Page.Product.Product_AddToCart());
+			Thread.sleep(3000);
+			ProductDetails_Page.Product.Product_AddToCart().click();
+			Thread.sleep(3000);
+			//ProductListing_Page.product().click();
+			//Log.info("Another Product clicked on PLP");
+			PDP_Action.product_selectDifferentSize(ProductDetails_Page.Product.size_variant_buttonlist());
+			Thread.sleep(3000);
 			ProductDetails_Page.Product.Product_AddToCart().click();
 			Log.info("Product added to cart on PDP");
-			Cart_Action.CheckMinicartDetails(iTestCaseRow);
-			MiniCart_Page.removeBtn().click();
-			Log.info("Remove product buton clicked on minicart");
+			Thread.sleep(3000);
+			MiniCart_Page.MiniCartProductDetails.MiniCartViewBag().click();
+			Log.info("View bag button clicked on minicart pop up");
+			Cart_Action.Verify_Public_Edit_Cart_Page_sameproduct(iTestCaseRow);
 			ExcelUtils.setCellData("Pass", iTestCaseRow, Constant.result);
-			Log.info("Verification for mini cart details successfull on PLP");
-			Utils.captureScreenshot(sTestCaseName,"Pass","Shopping Cart Details Screenshot");
+			Log.info("Verification for edit cart functionality on cart page for guest user successfull");
+			Utils.captureScreenshot(sTestCaseName, "Pass", "Cart Page Edit Cart Screenshot");
 
 		} catch (Exception e) {
-			Log.info("Verification for mini cart details failed");
+			Log.info("Verification for edit cart functionality on cart page for guest user failed");
 			ExcelUtils.setCellData("Fail", iTestCaseRow, Constant.result);
 			Utils.captureScreenshot(sTestCaseName, "Fail", "Failed");
 			Log.error(e.getMessage());
@@ -98,7 +101,6 @@ public class SS_CartPage_Private_Verify_ShopingCart_Details {
 	public void afterMethod() {
 
 		Log.endTestCase(sTestCaseName);
-
 		Driver.close();
 		Driver.quit();
 

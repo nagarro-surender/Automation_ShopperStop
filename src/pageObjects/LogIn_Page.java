@@ -39,12 +39,40 @@ public class LogIn_Page extends BaseClass {
 		}
 		return element;
 	}
+	
+	public static WebElement Profile_update_User_Pwd() throws Exception {
+		try {
+			Log.info("Locating User_Pwd element");
+			element = Driver.findElement(By.xpath(".//*[@id='member-login']//*[@id='j_password']"));
+			Log.info("User password field found on the page");
+		} catch (Exception e) {
+			Log.error("Exception in Class LogIn_Page | Method User_Pwd");
+			Log.error("User password field not found on the page");
+			throw (e);
+		}
+		return element;
+	}
 
 	public static WebElement submit_bt() throws Exception {
 
 		try {
 			Log.info("Locating submit_bt element");
 			element = Driver.findElement(By.id("loginajax"));
+			Log.info("Submit button found on the page");
+		} catch (Exception e) {
+			Log.error("Exception in Class LogIn_Page | Method submit_bt");
+			Log.error("Submit button not found on the page");
+			throw (e);
+		}
+		return element;
+
+	}
+	
+	public static WebElement Profile_upt_submit_bt() throws Exception {
+
+		try {
+			Log.info("Locating submit_bt element");
+			element = Driver.findElement(By.xpath(".//*[@id='internalloginajax']"));
 			Log.info("Submit button found on the page");
 		} catch (Exception e) {
 			Log.error("Exception in Class LogIn_Page | Method submit_bt");

@@ -105,7 +105,7 @@ public class SS_CheckOut_MiniCart_AlreadyLoginUser_EditAddress_Coupanapply {
 			//Utils.verifyElement(Checkout_Page.TopNavigation.CheckOutText());
 			//Log.info("User successfully reached to Checkout page");
 			CheckOut_Action.CheckOut_Edit_Address(iTestCaseRow);
-			Thread.sleep(5000);
+			
 			
 			Cart_Action.Verify_Private_Cart_Page_ApplyCoupan(iTestCaseRow);
 			Thread.sleep(5000);

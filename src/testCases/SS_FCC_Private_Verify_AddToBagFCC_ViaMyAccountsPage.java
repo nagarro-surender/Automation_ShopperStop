@@ -9,8 +9,13 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
 import pageObjects.BaseClass;
+import pageObjects.Cart_Page;
+import pageObjects.Checkout_Page;
 import pageObjects.Home_Page;
+import pageObjects.MiniCart_Page;
+import appModules.CheckOut_Action;
 import appModules.FCC_Action;
 import appModules.Login_App;
 import utility.Constant;
@@ -91,6 +96,29 @@ public class SS_FCC_Private_Verify_AddToBagFCC_ViaMyAccountsPage {
 		FCC_Action.FCC_Verify_AddToBagFCC_ViaMyAccountPage(iTestCaseRow);		
 		Log.info("FCC added to cart successfully");
 		
+		Thread.sleep(5000);
+
+		MiniCart_Page.MiniCartProductDetails.MiniCartViewBag().click();
+		Log.info("View bag button on mini cart clicked successfully");
+
+		Cart_Page.CheckoutButton().click();
+		Log.info("Checkout button on Cart Page clicked successfully");
+
+		//Utils.verifyElement(Checkout_Page.TopNavigation.CheckOutText());
+		//Log.info("User successfully reached to Checkout page");
+
+		CheckOut_Action.ProceedwithNewAddress(iTestCaseRow);
+		Utils.verifyElement(Checkout_Page.Paymentinfo.PaymentClass());
+		Log.info("Payment information tab is visible");
+		
+        
+		//CheckOut_Action.PaymentOption(iTestCaseRow);
+		
+		Home_Page.headerSoppersStopLogocheckout().click();
+		Thread.sleep(2000);
+		Home_Page.headerMiniCartIcon().click();
+		Thread.sleep(2000);
+        Home_Page.headerMiniCartIconclose().click();
 		if(BaseClass.bResult==true){
 			Log.info("Verification for buying FCC for registere user from My accounts page successfull");
 			ExcelUtils.setCellData("Pass", iTestCaseRow, Constant.result);
@@ -107,7 +135,6 @@ public class SS_FCC_Private_Verify_AddToBagFCC_ViaMyAccountsPage {
 			throw (e);
 		}
 	}
-
 	@AfterMethod
 	public void afterMethod() {
 

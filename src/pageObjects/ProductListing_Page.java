@@ -340,10 +340,10 @@ public static List<WebElement> DefaultAttributeFilterCategoryContainer()throws E
 
 		try {
 			Log.info("Locating Price related Primary Filter on PLP ");
-			//element = Driver.findElement(By
-					//.xpath("//div[@class='lists-names price-range js-facet-form']/preceding-sibling::div[contains(@class,'filter-category-heading')]"));
 			element = Driver.findElement(By
-					.xpath("//*[@id='tab13']/div[1]"));
+					.xpath("//div[@class='lists-names price-range js-facet-form']/preceding-sibling::div[contains(@class,'filter-category-heading')]"));
+			//element = Driver.findElement(By
+				//	.xpath("//*[@id='tab13']/div[1]"));
 			Log.info("Price related Primary Filter is present on PLP ");
 
 		} catch (Exception e) {
@@ -550,11 +550,11 @@ public static List<WebElement> DefaultAttributeFilterCategoryContainer()throws E
 
 		try {
 			Log.info("Locating Sale offer on PLP ");
-			//element = Driver.findElement(By
-				//	.xpath("//input[@id='"+saleOffer+"' and @type='checkbox']"));
-			
 			element = Driver.findElement(By
-					.xpath(".//*[@class='filter-scroll promo-list js-facet-form']//*[@id='"+saleOffer+"']"));
+				.xpath("//input[@id='Flat 40% Off' and @type='checkbox']"));
+			
+			//element = Driver.findElement(By
+				//	.xpath(".//*[@class='filter-scroll promo-list js-facet-form']//*[@id='"+saleOffer+"']"));
 			Log.info("Sale offer is present on PLP ");
 
 		} catch (Exception e) {

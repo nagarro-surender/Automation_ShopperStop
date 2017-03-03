@@ -105,7 +105,6 @@ public class SS_CheckOut_LoginAtCheckout_OrderUsingGiftCard {
 		} catch (Exception e) {
 			Log.error("Issue in making payment using Gift card");
 			ExcelUtils.setCellData("Fail", iTestCaseRow, Constant.result);
-
 			Utils.captureScreenshot(sTestCaseName, "Fail", "Failure");
 
 			Log.error(e.getMessage());

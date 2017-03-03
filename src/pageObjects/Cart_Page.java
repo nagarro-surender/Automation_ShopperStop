@@ -395,7 +395,24 @@ public class Cart_Page extends BaseClass {
 		return elements;
 
 	}
+	public static List<WebElement> UpdateProductSize() throws Exception {
 
+		try {
+			Log.info("Locating Update ProductSize Field elements on the cart page");
+			elements = Driver.findElements(By.xpath(
+					"//section[@class='shopping-bag-wpr']/descendant::form[contains(@id,'updateCartForm')]/ul/li[2]//*[contains(@id,'sizeProductCode')]"));
+
+			Log.info("Update Quantity Field exist on the cart page");
+
+		} catch (Exception e) {
+			Log.error("Exception in Class Cart_Page | Method UpdateQuantity");
+			Log.error("Update Quantity Field does not exist on the cart page");
+			throw e;
+		}
+
+		return elements;
+
+	}
 	public static List<WebElement> IncreaseQuantity() throws Exception {
 
 		try {
@@ -457,11 +474,12 @@ public class Cart_Page extends BaseClass {
 
 		try {
 			Log.info("Locating Checkout button on the cart page");
-			//element = Driver
-				//	.findElement(By.xpath("//section[@class='shopping-bag-wpr']//button[@class='btn-place-order']"));
+		//element = Driver
+			//.findElement(By.xpath("//section[@class='shopping-bag-wpr']//button[@class='btn-place-order']"));
 			
-			element = Driver
-					.findElement(By.xpath("html/body/main/section[2]/div/div/div[2]/div[1]/div[2]/div[1]/div/form/button"));
+			element = Driver.findElement(By.xpath("html/body/main/section[2]/div/div/div[2]/div[1]/div[2]/div[1]/div/form/button"));
+			
+			              
 
 			Log.info("Checkout button exist on the cart page");
 
@@ -555,8 +573,8 @@ public class Cart_Page extends BaseClass {
 
 		try {
 			Log.info("Locating Cart Page alert on the cart page");
-			//element = Driver.findElement(By.xpath("//div[@class='global-alerts']/div"));
-			element = Driver.findElement(By.xpath("//*[@id='globalMessages']//*[@class='alert alert-danger alert-dismissable']"));
+			element = Driver.findElement(By.xpath("//div[@class='global-alerts']/div"));
+			//element = Driver.findElement(By.xpath("//*[@class='global-alerts']//*[@class='alert alert-info alert-dismissable']"));
 			Log.info("Cart Page alert exist on the cart page");
 
 		} catch (Exception e) {

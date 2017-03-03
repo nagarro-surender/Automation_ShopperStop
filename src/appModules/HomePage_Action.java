@@ -68,6 +68,7 @@ public class HomePage_Action {
 		try {
 			Log.info("Verification for Free Shipping Link on Grid Box");
 			Static_Page.GridBox.Shipping().click();
+			Thread.sleep(3000);
 			Utils.PageHeaderCheck("Shipping | Shoppers Stop");
 			Utils.driverNavigation("backword");
 			Log.info("Verification check has been completed for Free Shipping Link on Grid Box");
@@ -81,6 +82,7 @@ public class HomePage_Action {
 		try {
 			Log.info("Verification for Easy Exchange and Returns Link on Grid Box");
 			Static_Page.GridBox.ExchangeAndReturns().click();
+			Thread.sleep(3000);
 			Utils.PageHeaderCheck("Returns | Shoppers Stop");
 			Utils.driverNavigation("backword");
 			Log.info("Verification check has been completed for Easy Exchange and Returns Link on Grid Box");
@@ -94,6 +96,7 @@ public class HomePage_Action {
 		try {
 			Log.info("Verification for COD Link on Grid Box");
 			Static_Page.GridBox.CashOnDelivery().click();
+			Thread.sleep(3000);
 			Utils.PageHeaderCheck("How do I pay Template | Shoppers Stop");
 			Utils.driverNavigation("backword");
 			Log.info("Verification check has been completed for COD Link on Grid Box");
@@ -380,11 +383,15 @@ public class HomePage_Action {
 		try {
 			Log.info("Verification for Track Order icon page functionality in Header");
 			Home_Page.headerTrackOrder().click();
+			Thread.sleep(5000);
 			Log.info("Track Order icon clicked successfully");
 			Utils.NewWindowAction();
 			Utils.verifyElement(Static_Page.TrackOrder.TrackOrder_Email_Id());
+			Thread.sleep(2000);
 			Utils.verifyElement(Static_Page.TrackOrder.Order_Number());
+			Thread.sleep(2000);
 			Utils.verifyElement(Static_Page.TrackOrder.Submit_Button());
+			Thread.sleep(2000);
 			Log.info("Verification check done for Track Order icon page functionality");
 
 		} catch (Exception e) {
@@ -633,24 +640,31 @@ public class HomePage_Action {
 
 			
 			Home_Page.Footer_Section.Help_FAQ().click();
+			Thread.sleep(5000);
 			Utils.PageHeaderCheck("FAQ | Shoppers Stop");
 
 			Home_Page.Footer_Section.Track_Order().click();
+			Thread.sleep(5000);
 			Utils.PageHeaderCheck("Shoppers Stop");
 
 			Home_Page.Footer_Section.Size_Guide().click();
+			Thread.sleep(5000);
 			Utils.PageHeaderCheck("Size Guide | Shoppers Stop");
 
 			Home_Page.Footer_Section.Buying_Guide().click();
+			Thread.sleep(5000);
 			Utils.PageHeaderCheck("BuyingGuide | Shoppers Stop");
 
 			Home_Page.Footer_Section.How_To_Buy().click();
+			Thread.sleep(5000);
 			Utils.PageHeaderCheck("Purchase | Shoppers Stop");
 
 			Home_Page.Footer_Section.How_To_Pay().click();
+			Thread.sleep(5000);
 			Utils.PageHeaderCheck("How do I pay Template | Shoppers Stop");
 
 			Home_Page.Footer_Section.Place_We_Deliever().click();
+			Thread.sleep(5000);
 			Utils.PageHeaderCheck("Shoppers Stop");
 
 			
@@ -673,15 +687,19 @@ public class HomePage_Action {
 	public static void FooterLinkVerification_Policy_Public(int iTestCaseRow) throws Exception {
 		try {
 			Home_Page.Footer_Section.TermsAndConditions().click();
+			Thread.sleep(5000);
 			Utils.PageHeaderCheck("Term and Condition | Shoppers Stop");
 
 			Home_Page.Footer_Section.Privacy().click();
+			Thread.sleep(5000);
 			Utils.PageHeaderCheck("Privacy | Shoppers Stop");
 
 			Home_Page.Footer_Section.Shipping_Policy().click();
+			Thread.sleep(5000);
 			Utils.PageHeaderCheck("Shipping | Shoppers Stop");
 
 			Home_Page.Footer_Section.Exchange_Returns().click();
+			Thread.sleep(5000);
 			Utils.PageHeaderCheck("Returns | Shoppers Stop");
 
 			Log.info("Verification check has been completed for FooterLinks related to Policy - Public View");
@@ -705,12 +723,15 @@ public class HomePage_Action {
 	public static void FooterLinkVerification_StoreandSite_Public(int iTestCaseRow) throws Exception {
 		try {
 			Home_Page.Footer_Section.AboutUs().click();
+			Thread.sleep(5000);
 			Utils.PageHeaderCheck("About us | Shoppers Stop");
 
 			Home_Page.Footer_Section.Corporate_Site().click();
+			Thread.sleep(5000);
 			Utils.NewWindowPageHeaderValidation("Shoppers Stop | Home");
 
 			Home_Page.Footer_Section.Store_Locator().click();
+			Thread.sleep(5000);
 			Utils.PageHeaderCheck("StoreFinder | Shoppers Stop");
 
 			Log.info("Verification check has been completed for Footer Links related to Store and Site - Public View");
@@ -731,9 +752,11 @@ public class HomePage_Action {
 	public static void FooterLinkVerification_FirstCitizen_Public(int iTestCaseRow) throws Exception {
 		try {
 			Home_Page.Footer_Section.First_Citizen().click();
+			Thread.sleep(5000);
 			Utils.PageHeaderCheck("First Citizen Non-Member | Shoppers Stop");
 
 			Home_Page.Footer_Section.Instant_Gifting().click();
+			Thread.sleep(5000);
 			Utils.PageHeaderCheck("Shoppers Stop");
 
 			Log.info("Verification check has been completed for Footer Links related to First Citizen - Public View");

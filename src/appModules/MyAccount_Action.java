@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import pageObjects.BaseClass;
 import pageObjects.Home_Page;
+import pageObjects.LogIn_Page;
 import pageObjects.MyAccount_Page;
 import utility.Constant;
 import utility.ExcelUtils;
@@ -23,8 +24,16 @@ public class MyAccount_Action {
 		try {
 
 			MyAccount_Page.ProfilePage.EditProfileBtn().click();
+			Thread.sleep(5000);
 			Log.info("Edit profile button is clicked");
-
+           // Utils.NewWindowAction();
+			String sPassword = ExcelUtils.getCellData(iTestCaseRow, Constant.password);
+			LogIn_Page.Profile_update_User_Pwd().sendKeys(sPassword);
+			Log.info(sPassword + " is entered in user password field");
+			Thread.sleep(2000);
+			LogIn_Page.Profile_upt_submit_bt().click();
+			Log.info("Button is entered in user password field");
+			Thread.sleep(5000);
 			if ("FirstName".equals(ExcelUtils.getCellData(iTestCaseRow, Constant.updatedField))) {
 
 				// Selecting the link profile from Home Page under Top
@@ -44,6 +53,7 @@ public class MyAccount_Action {
 				// Navigation
 
 				String LastName = ExcelUtils.getCellData(iTestCaseRow, Constant.updatedLastName);
+				Utils.scrollingToPageElementAdvanced(MyAccount_Page.ProfilePage.HomeStore());
 				MyAccount_Page.ProfilePage.LastName().clear();
 				MyAccount_Page.ProfilePage.LastName().sendKeys(LastName);
 

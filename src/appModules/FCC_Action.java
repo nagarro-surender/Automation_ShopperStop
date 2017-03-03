@@ -116,22 +116,22 @@ public class FCC_Action {
 			Log.info("Title is selected");
 			//Thread.sleep(5000);
 			FCC_Page.FCC_Form.FCCForm_DateOfBirth().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.DOB));
-			Thread.sleep(5000);
+		
 			Log.info("Dateofbirth is selected");
 			FCC_Page.FCC_Form.FCCForm_HomeSTDCode().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.homeSTD));
 			Log.info("homestd is selected");
-			Thread.sleep(5000);
+		
 			
 			FCC_Page.FCC_Form.FCCForm_HomeLandline()
 					.sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.homeLandline));
-			Thread.sleep(5000);
+		
 			FCC_Page.FCC_Form.FCCForm_OfficeSTDCode()
 					.sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.officeSTD));
-			Thread.sleep(5000);
+			
 			FCC_Page.FCC_Form.FCCForm_OfficeLandline()
 					.sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.officeLandline));
 			
-			Thread.sleep(20000);
+			
 			//Utils.scrollingToPageElementByCordinate(936, 386);
 			//Utils.verifyElement(FCC_Page.FCC_Form.FCCForm_Email());
 		} catch (Exception e) {
@@ -185,18 +185,18 @@ public class FCC_Action {
 			Log.info("Dateofbirth is selected");
 			FCC_Page.FCC_Form.FCCForm_HomeSTDCode().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.homeSTD));
 			Log.info("homestd is selected");
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 			
 			FCC_Page.FCC_Form.FCCForm_HomeLandline()
 					.sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.homeLandline));
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 			FCC_Page.FCC_Form.FCCForm_OfficeSTDCode()
 					.sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.officeSTD));
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 			FCC_Page.FCC_Form.FCCForm_OfficeLandline()
 					.sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.officeLandline));
 			
-			Thread.sleep(20000);
+			Thread.sleep(2000);
 			//Utils.scrollingToPageElementByCordinate(936, 386);
 			//Utils.verifyElement(FCC_Page.FCC_Form.FCCForm_Email());
 		} catch (Exception e) {
@@ -342,6 +342,41 @@ public class FCC_Action {
 			throw e;
 		}
 	}
+	
+public static void FCC_Verify_AddToBagFCC_GuestUser_ViaFooterLink(int iTestCaseRow) throws Exception {
+		
+		try {
+			Utils.verifyElement(FCC_Page.FCC_Links_Footer.FirstCitizenLink());
+			FCC_Page.FCC_Links_Footer.FirstCitizenLink().click();
+
+		} catch (Exception e) {
+			Log.error("Exception in Class FCC_Action | Method FCC_Verify_QuickBuyFCC_ViaFooterLink");
+			Log.error(e.getMessage());
+			throw e;
+		}
+		try {
+			Utils.verifyElement(FCC_Page.AddToBag());
+			FCC_Page.AddToBag().click();
+		} catch (Exception e) {
+			Log.error(e.getMessage());
+			Log.error("Exception in Class FCC_Action | Method FCC_Verify_AddToBagFCC_GuestUser_ViaHeaderLink");
+			throw e;
+		}
+		
+		try {
+			FCC_Verify_BuyFCC_GuestUserFlow(iTestCaseRow);
+			Thread.sleep(5000);
+			//Utils.verifyElement(FCC_Page.AddToBagBottomButton());
+			//Utils.mouseHover(Home_Page.headerSoppersStopLogo());
+			Utils.mouseHover(FCC_Page.AddToBagBottomButton());
+			FCC_Page.AddToBagBottomButton().sendKeys(Keys.ENTER);
+		} catch (Exception e) {
+			Log.error(e.getMessage());
+			Log.error("Exception in Class FCC_Action | Method FCC_Verify_AddToBagFCC_GuestUser_ViaHeaderLink_on click button");
+			throw e;
+		}
+	}
+
 	public static void FCC_Verify_QuickBuyFCC_ViaHeaderLink(int iTestCaseRow) throws Exception {
 
 		try {
@@ -438,6 +473,18 @@ public class FCC_Action {
 	}
 
 	public static void FCC_Verify_QuickBuyFCC_GuestUser_ViaHeaderLink(int iTestCaseRow) throws Exception {
+		
+		try {
+			Utils.verifyElement(FCC_Page.FCC_Links_Footer.FirstCitizenLink());
+			FCC_Page.FCC_Links_Footer.FirstCitizenLink().click();
+
+		} catch (Exception e) {
+			Log.error("Exception in Class FCC_Action | Method FCC_Verify_QuickBuyFCC_GuestUser_ViaHeaderLink");
+			Log.error(e.getMessage());
+			throw e;
+		}
+		
+		
 		try {
 			Utils.verifyElement(FCC_Page.QuickBuyGuestUser());
 			FCC_Page.QuickBuyGuestUser().click();

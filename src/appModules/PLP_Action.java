@@ -178,7 +178,7 @@ public class PLP_Action {
 	public static void PLP_Verify_Brand_FilterDropDown(int iTestCaseRow) throws Exception {
 		boolean check;
 		try {
-			Utils.scrollingToPageElementAdvanced(ProductListing_Page.PrimaryFilterPriceDropDown());
+			Utils.scrollingToPageElementAdvanced(ProductListing_Page.PrimaryFilterBrandDropDownContainer());
 			//Utils.scrollingToPageElementByCordinate(140, 700);
 			check = Utils.CheckEnability(ProductListing_Page.PrimaryFilterBrandDropDownContainer());
 			if (!check) {
@@ -217,7 +217,7 @@ public class PLP_Action {
 	public static void PLP_Verify_Price_FilterDropDown(int iTestCaseRow) throws Exception {
 		boolean check;
 		try {
-			Utils.scrollingToPageElementAdvanced(ProductListing_Page.PrimaryFilterColorDropDown());
+			Utils.scrollingToPageElementAdvanced(ProductListing_Page.PrimaryFilterPriceDropDown());
 			//Thread.sleep(5000);
 			//Utils.scrollingToPageElementByCordinate(140, 50);
 			check = Utils.CheckEnability(ProductListing_Page.PrimaryFilterPriceDropDownContainer());
@@ -229,7 +229,7 @@ public class PLP_Action {
 			//Utils.mouseHover(ProductListing_Page.PrimaryFilterPriceDropDown());
 			
 			//Thread.sleep(5000);
-			//ProductListing_Page.PrimaryFilterPriceDropDown().sendKeys(Keys.ENTER);
+		    // ProductListing_Page.PrimaryFilterPriceDropDown().sendKeys(Keys.ENTER);
 			//ProductListing_Page.PrimaryFilterPriceDropDown().sendKeys(Keys.ENTER);
 			Log.info("Primary filter Price drop down clicked on PLP page");
 			Utils.waitForLoad(ExcelUtils.getCellData(iTestCaseRow, Constant.browser));
@@ -263,7 +263,7 @@ public class PLP_Action {
 	public static void PLP_Verify_Size_FilterDropDown(int iTestCaseRow) throws Exception {
 		boolean check;
 		try {
-			//Utils.scrollingToPageElementAdvanced(ProductListing_Page.PrimaryFilterSizeDropDown());
+			Utils.scrollingToPageElementAdvanced(ProductListing_Page.PrimaryFilterSizeDropDownContainer());
 			//Utils.scrollingToPageElementByCordinate(140, 500);
 			Log.info("Scrolled to Size Primary filter drop down on PLP page");
 			check = Utils.CheckEnability(ProductListing_Page.PrimaryFilterSizeDropDownContainer());
@@ -304,7 +304,7 @@ public class PLP_Action {
 		boolean check;
 		try {
 
-			Utils.scrollingToPageElementAdvanced(ProductListing_Page.PrimaryFilterSizeDropDown());
+			Utils.scrollingToPageElementAdvanced(ProductListing_Page.PrimaryFilterColorDropDownContainer());
 			//Utils.scrollingToPageElementByCordinate(144, 900);
 			Log.info("Scrolled to Color filter drop down on PLP page");
 			check = Utils.CheckEnability(ProductListing_Page.PrimaryFilterColorDropDownContainer());
@@ -344,7 +344,7 @@ public class PLP_Action {
 		boolean check;
 		try {
 
-			//Utils.scrollingToPageElementAdvanced(ProductListing_Page.PrimaryFilterOnSaleDropDown());
+			Utils.scrollingToPageElementAdvanced(ProductListing_Page.PrimaryFilterOnSaleDropDownContainer());
 			//Utils.scrollingToPageElementByCordinate(144, 1100);
 			Log.info("Scrolled to On Sale filter drop down on PLP page");
 			check = Utils.CheckEnability(ProductListing_Page.PrimaryFilterOnSaleDropDownContainer());
@@ -383,11 +383,13 @@ public class PLP_Action {
 
 		Log.info("Verification for Primary Filter Drop Down Functionality on PLP page");
 		try {
-			PLP_Verify_OnSale_FilterDropDown(iTestCaseRow);
+			PLP_Verify_Brand_FilterDropDown(iTestCaseRow);
+			
 			PLP_Verify_Size_FilterDropDown(iTestCaseRow);
 			PLP_Verify_Color_FilterDropDown(iTestCaseRow);
 			PLP_Verify_Price_FilterDropDown(iTestCaseRow);
-			PLP_Verify_Brand_FilterDropDown(iTestCaseRow);
+			PLP_Verify_OnSale_FilterDropDown(iTestCaseRow);
+			
 			
 			
 		} catch (Exception e) {
