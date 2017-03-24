@@ -91,8 +91,10 @@ public class ProductListing_Page extends BaseClass {
 
 		try {
 			Log.info("Locating Product Item Count on PLP");
+			//element = Driver.findElement(By.xpath(
+					//"//div[@class='heading-filter-sec']/descendant::div[@class='pro-list-heading margB20 col-md-12 text-center']/h4/span"));
 			element = Driver.findElement(By.xpath(
-					"//div[@class='heading-filter-sec']/descendant::div[@class='pro-list-heading margB20 col-md-12 text-center']/h4/span"));
+					"//div[@class='container']//*[@class='plpHeader hidden-sm hidden-xs']/h1/span"));
 			Log.info("Product Item Count found on PLP");
 
 		} catch (Exception e) {
@@ -105,6 +107,25 @@ public class ProductListing_Page extends BaseClass {
 
 	}
 
+	public static WebElement HeadingProductCount() throws Exception {
+
+		try {
+			Log.info("Locating Product Item Count with Product heading PLP");
+			//element = Driver.findElement(By.xpath(
+				//	"//div[@class='heading-filter-sec']/descendant::div[@class='pro-list-heading margB20 col-md-12 text-center']/h4/span"));
+			element = Driver.findElement(By.xpath(
+					"//div[@class='container']//*[@class='plpHeader hidden-sm hidden-xs']/h1"));
+			Log.info("Product Item Count with Product heading found on PLP");
+
+		} catch (Exception e) {
+			Log.error("Exception in Class ProductListing_Page | Method HeadingProductCount");
+			Log.error("Product Item Count with Product heading not found on PLP");
+			throw (e);
+		}
+
+		return element;
+
+	}
 	public static Select SortOptions() throws Exception {
 
 		try {
@@ -155,6 +176,42 @@ public class ProductListing_Page extends BaseClass {
 		return element;
 
 	}
+
+	public static WebElement ShowMoreLink() throws Exception {
+
+		try {
+			Log.info("Locating Show More Link on PLP ");
+			element = Driver.findElement(By.xpath("//*[@class='tab_content tabs_item-showing']/div[1]//*[@class='showMore']"));
+			Log.info("Show More Link found on PLP ");
+
+		} catch (Exception e) {
+			Log.error("Exception in Class ProductListing_Page | Method ShowMoreLink");
+			Log.error("Show More Link not found on PLP");
+			throw (e);
+		}
+
+		return element;
+
+	}
+	
+	
+	public static WebElement ShowLessLink() throws Exception {
+
+		try {
+			Log.info("Locating Show Less Link on PLP ");
+			element = Driver.findElement(By.xpath("//*[@class='tab_content']/div[1]//*[@class='showLess']"));
+			Log.info("Show Less Link found on PLP ");
+
+		} catch (Exception e) {
+			Log.error("Exception in Class ProductListing_Page | Method ShowMoreLink");
+			Log.error("Show Less Link not found on PLP");
+			throw (e);
+		}
+
+		return element;
+
+	}
+	
 
 	public static WebElement DefaultFilterContainer() throws Exception {
 
@@ -300,12 +357,32 @@ public static List<WebElement> DefaultAttributeFilterCategoryContainer()throws E
 		return element;
 
 	}
+	
+	public static WebElement ShowMoreLinkContent() throws Exception {
+
+		try {
+			Log.info("Locating Show More Link on PLP ");
+			element = Driver.findElement(By.xpath("//*[@class='tab_content tabs_item-showing']/div[1]"));
+			Log.info("Show More Link found on PLP ");
+
+		} catch (Exception e) {
+			Log.error("Exception in Class ProductListing_Page | Method ShowMoreLink");
+			Log.error("Show More Link not found on PLP");
+			throw (e);
+		}
+
+		return element;
+
+	}
 	public static WebElement PrimaryFilterBrandDropDown()throws Exception {
 
 		try {
 			Log.info("Locating Brand related Primary Filter on PLP ");
+			//element = Driver.findElement(By
+				//	.xpath("//div[@class='brands-list js-facet-form']/preceding-sibling::div[contains(@class,'filter-category-heading')]"));
 			element = Driver.findElement(By
-					.xpath("//div[@class='brands-list js-facet-form']/preceding-sibling::div[contains(@class,'filter-category-heading')]"));
+					.xpath("//div[@class='filter-scroll cat-list js-facet-form']/preceding-sibling::div[contains(@class,'filter-category-heading')]"));
+
 			Log.info("Brand related Primary Filter is present on PLP ");
 
 		} catch (Exception e) {
@@ -321,8 +398,11 @@ public static List<WebElement> DefaultAttributeFilterCategoryContainer()throws E
 
 		try {
 			Log.info("Locating Brand related Primary Filter Container on PLP ");
+			//element = Driver.findElement(By
+					//.xpath("//div[@class='brands-list js-facet-form']"));
+			
 			element = Driver.findElement(By
-					.xpath("//div[@class='brands-list js-facet-form']"));
+					.xpath("//div[@class='filter-scroll cat-list js-facet-form']"));
 			Log.info("Brand related Primary Filter Container is present on PLP ");
 
 		} catch (Exception e) {
