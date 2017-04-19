@@ -223,6 +223,20 @@ public class Utils {
 
 	}
 
+	public static void SelectDropdownUpdatedReason(WebElement mainElement) throws Exception {
+		try {
+			Log.info("Selecting the element from drop down");
+			
+			Select rob = new Select(mainElement);
+			rob.selectByIndex(4);
+			
+		} catch (Exception e) {
+			Log.error("Exception in Class Utils | Method SelectDropdownUpdatedReason");
+			Log.error("Issue in Selecting the element from drop down");
+			throw e;
+		}
+
+	}
 	public static void SecurityCertificateHandle() throws Exception {
 		try {
 			Log.info("Handling security certificates");
