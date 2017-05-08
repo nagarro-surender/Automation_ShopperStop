@@ -24,6 +24,15 @@ public class PDP_Action {
 			Log.error("Product name is not present");
 			BaseClass.errorValidation = BaseClass.errorValidation + "Verification Fail: Product name is not present \n";
 		}
+		
+		try {
+			Utils.verifyElement(ProductDetails_Page.Product.Brand_Name());
+			Log.info("Verification Pass: Brand Name found");
+
+		} catch (Exception e) {
+			Log.error("Brand name is not present");
+			BaseClass.errorValidation = BaseClass.errorValidation + "Verification Fail: Brand name is not present \n";
+		}
 
 		try {
 			Utils.verifyElement(ProductDetails_Page.Product.txt_Price());
@@ -33,7 +42,7 @@ public class PDP_Action {
 			Log.error("Product price is not present");
 			BaseClass.errorValidation = BaseClass.errorValidation + "Verification Fail: Product price is not present \n";
 		}
-
+/*
 		try {
 			Utils.verifyElement(ProductDetails_Page.Product.Product_Star_Rating());
 			Log.info("Verification Pass: Product Star Rating found");
@@ -41,7 +50,7 @@ public class PDP_Action {
 		} catch (Exception e) {
 			Log.error("Product Star Rating is not present");
 			BaseClass.errorValidation = BaseClass.errorValidation + "Verification Fail: Product Star Rating is not present \n";
-		}
+		}*/
 
 		try {
 			Utils.verifyElement(ProductDetails_Page.Product.color_variant());
@@ -78,7 +87,7 @@ public class PDP_Action {
 			Log.error("Product description content are not present");
 			BaseClass.errorValidation = BaseClass.errorValidation + "Verification Fail: Product description content are not present \n";
 		}
-
+/*
 		try {
 			Utils.verifyElement(ProductDetails_Page.Product.Product_Unit());
 			Log.info("Verification Pass: Product Unit content found");
@@ -86,8 +95,33 @@ public class PDP_Action {
 		} catch (Exception e) {
 			Log.error("Product Unit content are not present");
 			BaseClass.errorValidation = BaseClass.errorValidation + "Verification Fail: Product Unit content are not present \n";
-		}
+		}*/
+       
+		try {
+			Utils.verifyElement(ProductDetails_Page.Product.Authentic_Content());
+			Log.info("Verification Pass: Product Authentic content found");
 
+		} catch (Exception e) {
+			Log.error("Product Authentic content are not present");
+			BaseClass.errorValidation = BaseClass.errorValidation + "Verification Fail: Product Authentic content are not present \n";
+		}
+		
+		try {
+			Utils.verifyElement(ProductDetails_Page.Product.Free_shipping());
+			Log.info("Verification Pass: Product Free shipping content found");
+			Utils.mouseHover(ProductDetails_Page.Product.Free_shipping());
+			//Utils.verifyElement(ProductDetails_Page.Product.Free_shippingContent());
+			//System.out.println(ProductDetails_Page.Product.Free_shipping().getAttribute("title"));
+			if (!(ProductDetails_Page.Product.Free_shipping().getAttribute("title").contains("Free Delivery On Orders Of Rs 900 & above"))) {
+					BaseClass.errorValidation += "Free Shipping alert not present on page. \n";
+				}
+
+		} catch (Exception e) {
+			Log.error("Product Free shipping content are not present");
+			BaseClass.errorValidation = BaseClass.errorValidation + "Verification Fail: Product Free shipping content are not present \n";
+		}
+		
+		
 		if (ProductDetails_Page.Product.Product_Unit().getAttribute("value").equals("1")) {
 			Log.info("Verification Pass: Product Unit defaulted to 1");
 		} else {

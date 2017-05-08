@@ -1272,6 +1272,23 @@ public class Checkout_Page extends BaseClass {
 
 		}
 
+		public static WebElement ContinueGuestradioButton() throws Exception {
+
+			try {
+				Log.info("Locating ContinueGuestRadioBtn element");
+				element = Driver.findElement(By.xpath("//label[text()='Continue As a Guest']"));
+
+				Log.info("Continue as a guest Radio button is found on the checkout page");
+
+			} catch (Exception e) {
+				Log.error("Exception in Class Checkout_Page | Method ContinueGuestradioButton");
+				Log.error("Continue as a guest radio button is not found on the checkout Page");
+				throw e;
+			}
+
+			return element;
+
+		}
 		public static WebElement LoginPwdRegisteredUser() throws Exception {
 
 			try {

@@ -207,8 +207,10 @@ public class ProductDetails_Page extends BaseClass {
 
 			try {
 				Log.info("Locating txt_Price element");
+				//element = Driver.findElement(By.xpath(
+					//	"//section[@class='product_details_main']/descendant::div[@class='product_rightside']//div[@class='price_div']/span"));
 				element = Driver.findElement(By.xpath(
-						"//section[@class='product_details_main']/descendant::div[@class='product_rightside']//div[@class='price_div']/span"));
+				"//section[@class='product_details_main']//*[@class='bname-pname-price']//*[@class='pdp-price']"));
 
 				Log.info("Product price found on PDP");
 
@@ -228,8 +230,10 @@ public class ProductDetails_Page extends BaseClass {
 
 			try {
 				Log.info("Locating color_variant element");
+				//element = Driver.findElement(By.xpath(
+				//		"//section[@class='product_details_main']/descendant::div[@class='product_rightside']//div[@class='variant-selector']"));
 				element = Driver.findElement(By.xpath(
-						"//section[@class='product_details_main']/descendant::div[@class='product_rightside']//div[@class='variant-selector']"));
+						"//section[@class='product_details_main']//*[@class='variant-name']"));
 
 				Log.info("Product color variant found on PDP");
 
@@ -271,8 +275,10 @@ public class ProductDetails_Page extends BaseClass {
 
 			try {
 				Log.info("Locating size variant button list element");
+				//element2 = Driver.findElements(By.xpath(
+				//		"//section[@class='product_details_main']/descendant::div[@class='product_rightside']//button[contains(@class, 'variant-size-button')]"));
 				element2 = Driver.findElements(By.xpath(
-						"//section[@class='product_details_main']/descendant::div[@class='product_rightside']//button[contains(@class, 'variant-size-button')]"));
+						"//section[@class='product_details_main']//button[contains(@class, 'variant-size-button')]"));
 
 				Log.info("Product size variant button list found on PDP");
 
@@ -387,6 +393,26 @@ public class ProductDetails_Page extends BaseClass {
 			return element;
 
 		}
+		
+		public static WebElement PDPImage() throws Exception {
+
+			try {
+				Log.info("Locating Image PDP element");
+				element = Driver.findElement(By.xpath("//*[@class='pdp-slider-container']//ul/li[1]//*[@id='imageZoom']"));
+
+				Log.info("Image PDP is found on PDP");
+
+			} catch (Exception e) {
+				Log.error("Exception in Class ProductDetails_Page | Method PDPImage");
+				Log.error("PDP Image is not found on PDP");
+
+				throw (e);
+
+			}
+
+			return element;
+
+		}
 
 		public static WebElement ZoomInWindowDiv() throws Exception {
 
@@ -447,6 +473,27 @@ public class ProductDetails_Page extends BaseClass {
 			return element;
 
 		}
+		
+		public static WebElement SizeAlert() throws Exception {
+
+			try {
+				Log.info("Locating Size Alert element");
+            element = Driver.findElement(By.xpath(" //section[@class='product_details_main']//*[@class='addtocart-component clearfix pdpbtn']/p"));
+
+
+				Log.info("Size Alert element is found on PDP");
+
+			} catch (Exception e) {
+				Log.error("Exception in Class ProductDetails_Page | Method SizeAlert");
+				Log.error("Size Alert element is not found on PDP");
+
+				throw (e);
+
+			}
+
+			return element;
+
+		}
 
 		public static WebElement Product_Unit() throws Exception {
 
@@ -467,19 +514,102 @@ public class ProductDetails_Page extends BaseClass {
 			return element;
 
 		}
+		
+		public static WebElement Authentic_Content() throws Exception {
+
+			try {
+				Log.info("Locating Authentic_Content element");
+				element = Driver.findElement(By.xpath("//section[@class='product_details_main']//*[@class='authentic-product']"));
+
+				Log.info("Authentic_Contentfield found");
+
+			} catch (Exception e) {
+				Log.error("Exception in Class ProductDetails_Page | Method Authentic_Content");
+				Log.error("Authentic_Content field not found");
+
+				throw (e);
+
+			}
+
+			return element;
+
+		}
+		
+		public static WebElement Free_shipping() throws Exception {
+
+			try {
+				Log.info("Locating Free_shipping element");
+				element = Driver.findElement(By.xpath("//section[@class='product_details_main']//*[@class='free-shipping']"));
+
+				Log.info("Free_shipping found");
+				
+
+			} catch (Exception e) {
+				Log.error("Exception in Class ProductDetails_Page | Method Free_shipping");
+				Log.error("Free_shipping field not found");
+
+				throw (e);
+
+			}
+
+			return element;
+
+		}
+		
+		public static WebElement Free_shippingcontent() throws Exception {
+
+			try {
+				Log.info("Locating Free_shippingcontent element");
+				element = Driver.findElement(By.xpath("//section[@class='product_details_main']//*[@class='free-shipping']"));
+
+				Log.info("Free_shippingcontent found");
+				
+
+			} catch (Exception e) {
+				Log.error("Exception in Class ProductDetails_Page | Method Free_shippingcontent");
+				Log.error("Free_shippingcontent field not found");
+
+				throw (e);
+
+			}
+
+			return element;
+
+		}
 
 		public static WebElement Product_Name() throws Exception {
 
 			try {
 				Log.info("Locating Product_Name element");
 				element = Driver.findElement(By.xpath(
-						"//section[@class='product_details_main']/descendant::div[@class='product_description']/*[@itemprop='name']"));
+						"//section[@class='product_details_main']//*[@class='bname-pname-price']//*[@class='pdp-pname']"));
 
 				Log.info("Product name field is found");
 
 			} catch (Exception e) {
 				Log.error("Exception in Class ProductDetails_Page | Method Product_Name");
 				Log.error("Product name field is not found");
+
+				throw (e);
+
+			}
+
+			return element;
+
+		}
+		
+		public static WebElement Brand_Name() throws Exception {
+
+			try {
+				Log.info("Locating Brand_Name element");
+				element = Driver.findElement(By.xpath(
+						"//section[@class='product_details_main']//*[@class='bname-pname-price']//*[@class='pdp-bname']"));
+
+				Log.info("Brand name field is found");
+
+			} catch (Exception e) {
+				Log.error("Exception in Class ProductDetails_Page | Method Brand_Name");
+				Log.error("Brand name field is not found");
 
 				throw (e);
 
@@ -531,6 +661,7 @@ public class ProductDetails_Page extends BaseClass {
 
 		}
 		
+	
 		public static WebElement FCC_Product_AddToCart() throws Exception {
 
 			try {
@@ -717,8 +848,8 @@ public class ProductDetails_Page extends BaseClass {
 
 			try {
 				Log.info("Locating WriteReview element");
-				element = Driver.findElement(By.xpath("//div[@class='product_description']//a[@class='scroll']"));
-
+				//element = Driver.findElement(By.xpath("//div[@class='product_description']//*[@class='sm_star_active']"));
+				element = Driver.findElement(By.xpath("//*[@id='rating_review_main']//*[@class='sbt-button zoom_write']"));
 				Log.info("Write review link is present on the page");
 
 			} catch (Exception e) {
@@ -737,7 +868,8 @@ public class ProductDetails_Page extends BaseClass {
 
 			try {
 				Log.info("Locating PinCode element");
-				element = Driver.findElement(By.xpath("//*[@id='dpincodetxt']"));
+				//element = Driver.findElement(By.xpath("//*[@id='dpincodetxt']"));
+				element = Driver.findElement(By.xpath("//*[@id='pincodetxt']"));
 
 				Log.info("PinCode field is present on the page");
 
@@ -757,8 +889,8 @@ public class ProductDetails_Page extends BaseClass {
 
 			try {
 				Log.info("Locating PinCodeChange element");
-				element = Driver.findElement(By.xpath("//div[@class='product_description']//*[@id='pincodetxt']"));
-
+				//element = Driver.findElement(By.xpath("//div[@class='product_description']//*[@id='pincodetxt']"));
+				element = Driver.findElement(By.xpath("//section[@class='product_details_main']//*[@id='chngbtn']"));
 				Log.info("PinCode field is present on the page");
 
 			} catch (Exception e) {
@@ -777,7 +909,8 @@ public class ProductDetails_Page extends BaseClass {
 
 			try {
 				Log.info("Locating PinCodeCheckBtn element");
-				element = Driver.findElement(By.xpath("//div[@class='product_description']//*[@class='codbtn']"));
+				//element = Driver.findElement(By.xpath("//div[@class='product_description']//*[@class='codbtn']"));
+				element = Driver.findElement(By.xpath("//section[@class='product_details_main']//*[@class='codbtn']"));			
 
 				Log.info("PinCode check button is present on the page");
 
@@ -797,8 +930,8 @@ public class ProductDetails_Page extends BaseClass {
 
 			try {
 				Log.info("Locating PinCodeSuccessMsg element");
-				element2 = Driver.findElements(By.xpath("//div[@class='product_description']//p[@class='pinsuccess']"));
-
+	//			element2 = Driver.findElements(By.xpath("//div[@class='product_description']//p[@class='pinsuccess']"));
+				element2 = Driver.findElements(By.xpath("//section[@class='product_details_main']//p[contains(@class,'pinsuccess')]"));
 				Log.info("PinCode success message is present on the page");
 
 			} catch (Exception e) {
@@ -818,7 +951,7 @@ public class ProductDetails_Page extends BaseClass {
 			try {
 				Log.info("Locating InvalidPinCodeMsg element");
 				element = Driver.findElement(By.xpath(
-						"//div[@class='product_description']/*[@id='invalidPinID' and contains(@style, 'block')]"));
+						"  //section[@class='product_details_main']//*[@id='invalidPinID']"));
 
 				Log.info("Invalid pincode message is present on the page");
 

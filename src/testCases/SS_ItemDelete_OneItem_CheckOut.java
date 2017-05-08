@@ -122,7 +122,15 @@ public class SS_ItemDelete_OneItem_CheckOut {
 			Log.info("Product added to cart on PDP");
 			Thread.sleep(2000);
 			MiniCart_Page.removeBtn().click();
-			MiniCart_Page.MiniCartProductDetails.MiniCartCheckOutButton().click();
+			Thread.sleep(3000);
+            Utils.verifyElement(Cart_Page.CheckOutButtonOnMiniCart());
+			
+			Cart_Page.CheckOutButtonOnMiniCart().click();
+			Log.info("Checkout button is clicked on cart page");
+            Thread.sleep(2000);
+	
+            Checkout_Page.LoginDetails.ContinueGuestradioButton().click();
+            Thread.sleep(3000);
 			String userEmail = ExcelUtils.getCellData(iTestCaseRow, Constant.emailId);
 			Checkout_Page.LoginDetails.LoginEmailGuest().sendKeys(userEmail);
 			Log.info("User email id is entered successfully");

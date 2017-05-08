@@ -314,14 +314,14 @@ public class Cart_Action {
 			Log.error(e.getMessage());
 			throw e;
 		}
-		try {
+/*		try {
 			if (!(Cart_Page.EditCartLink().size() > 0)) {
 				BaseClass.errorValidation += "Edit cart link does not exist on the cart page \n";
 			}
 		} catch (Exception e) {
 			Log.error(e.getMessage());
 			throw e;
-		}
+		}*/
 		try {
 			if (!(Cart_Page.MoveToWishlist().size() > 0)) {
 				BaseClass.errorValidation += "Move To Wishlist icon does not exist on the cart page \n";
@@ -441,36 +441,37 @@ public class Cart_Action {
 		}
 	}
 
-	public static void Verify_Private_Cart_Page_GiftWrap_Details(int iTestCaseRow) throws Exception {
-		Log.info("Verification for Gift wrap and message drop down on cart page for registered user started");
-		try {
-			Utils.verifyElement(Cart_Page.GiftWrapIcon());
-		} catch (Exception e) {
 
-			Log.error(e.getMessage());
-			BaseClass.errorValidation += "gift Wrap icon is not present on cart page\n";
+
+		public static void Verify_Private_Cart_Page_GiftWrap_Details(int iTestCaseRow) throws Exception {
+			Log.info("Verification for Gift wrap and message drop down on cart page for registered user started");
+			try {
+				Utils.verifyElement(Cart_Page.GiftWrapIcon());
+			} catch (Exception e) {
+
+				Log.error(e.getMessage());
+				BaseClass.errorValidation += "gift Wrap icon is not present on cart page\n";
+			}
+			try {
+				Utils.verifyElement(Cart_Page.AddMessageDropDown());
+			} catch (Exception e) {
+
+				Log.error(e.getMessage());
+				BaseClass.errorValidation += "Add Gift Wrap message drop down is not present on cart page\n";
+			}
+			try {
+				Utils.verifyElement(Cart_Page.AddMessageOnGiftWrapLink());
+			} catch (Exception e) {
+
+				Log.error(e.getMessage());
+				BaseClass.errorValidation += "Add Gift Wrap message link is not present on cart page\n";
+			}
+
+			if (!BaseClass.errorValidation.isEmpty()) {
+				Log.error("Exception in Class Cart_Action | Method Verify_Private_Cart_Page_GiftWrap_Details");
+				throw new Exception(BaseClass.errorValidation);
+			}
 		}
-		try {
-			Utils.verifyElement(Cart_Page.AddMessageDropDown());
-		} catch (Exception e) {
-
-			Log.error(e.getMessage());
-			BaseClass.errorValidation += "Add Gift Wrap message drop down is not present on cart page\n";
-		}
-		try {
-			Utils.verifyElement(Cart_Page.AddMessageOnGiftWrapLink());
-		} catch (Exception e) {
-
-			Log.error(e.getMessage());
-			BaseClass.errorValidation += "Add Gift Wrap message link is not present on cart page\n";
-		}
-
-		if (!BaseClass.errorValidation.isEmpty()) {
-			Log.error("Exception in Class Cart_Action | Method Verify_Private_Cart_Page_GiftWrap_Details");
-			throw new Exception(BaseClass.errorValidation);
-		}
-	}
-
 	public static void Verify_Private_Cart_Page_Other_Details(int iTestCaseRow) throws Exception {
 		Log.info("Verification for other links on cart page for registered user started");
 		try {
@@ -548,12 +549,15 @@ public class Cart_Action {
 		String productQuantity = "";
 		try {
 			productQuantity = Cart_Page.UpdateQuantity().get(0).getAttribute("value");
-			Cart_Page.EditCartLink().get(0).click();
-			Log.info("Edit cart link clicked successfully");
+			//Cart_Page.EditCartLink().get(0).click();
+			//Log.info("Edit cart link clicked successfully");
+			Thread.sleep(5000);
 			Cart_Page.IncreaseQuantity().get(0).click();
 			Log.info("Increase quantity link clicked successfully");
+			Thread.sleep(5000);
 			Cart_Page.UpdateCartItem().get(0).click();
 			Log.info("Update cart link clicked successfully");
+			Thread.sleep(5000);
 			System.out.println(Cart_Page.UpdateQuantity().get(0).getAttribute("value"));
 			if (Cart_Page.UpdateQuantity().get(0).getAttribute("value").equals(productQuantity)) {
 				BaseClass.errorValidation += "Product quantity increase functionality not working\n";
@@ -575,9 +579,9 @@ public class Cart_Action {
 		try {
 			productQuantity = Cart_Page.UpdateQuantity().get(0).getAttribute("value");
 			Thread.sleep(3000);
-			Cart_Page.EditCartLink().get(0).click();
-			Log.info("Edit cart link clicked successfully");
-			Thread.sleep(5000);
+			//Cart_Page.EditCartLink().get(0).click();
+			//Log.info("Edit cart link clicked successfully");
+			//Thread.sleep(5000);
 			Utils.SelectDropdownUpdated(Cart_Page.UpdateProductSize().get(0));
 			Thread.sleep(3000);
 			Cart_Page.UpdateCartItem().get(0).sendKeys(Keys.ENTER);

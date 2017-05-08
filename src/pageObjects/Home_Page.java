@@ -251,7 +251,44 @@ public class Home_Page extends BaseClass {
 		return element;
 
 	}
+	public static WebElement Shipping_Icon() throws Exception {
 
+		try {
+			Log.info("Locating Shipping_Icon element");
+			element = Driver.findElement(By.xpath("//*[@class='shipping']"));
+
+			Log.info("Shipping icon Link found under Footer Section");
+
+		} catch (Exception e) {
+			Log.error("Exception in Class Home_Page | Method Shipping_Icon");
+			Log.error("Shipping Icon is not found under  Footer Section");
+
+			throw (e);
+
+		}
+		return element;
+
+	}
+	
+	public static WebElement ContactUs_Icon() throws Exception {
+
+		try {
+			Log.info("Locating ContactUs_Icon element");
+			element = Driver.findElement(By.xpath("//*[@class='contactus']"));
+
+			Log.info("ContactUs_Icon Link found under Header Section");
+
+		} catch (Exception e) {
+			Log.error("Exception in Class Home_Page | Method ContactUs_Icon");
+			Log.error("ContactUs_Icon is not found under  header Section");
+
+			throw (e);
+
+		}
+		return element;
+
+	}
+	
 	public static class Footer_Section {
 
 		static WebElement element;
@@ -821,7 +858,7 @@ public class Home_Page extends BaseClass {
 
 		try {
 			Log.info("Locating headerTrackOrder element");
-			element = Driver.findElement(By.xpath("//a[@class='order' and contains(@href,'trackorders')]"));
+			element = Driver.findElement(By.xpath("//a[@class='trackorder' and contains(@href,'trackorders')]"));
 
 			Log.info("Track Order icon is found on the Header on Home Page");
 
@@ -911,7 +948,8 @@ public class Home_Page extends BaseClass {
 
 		try {
 			Log.info("Locating headerWishlistIcon element");
-			element = Driver.findElement(By.xpath("html/body/main/header/div/div/div/div[5]/ul/li[3]/a"));
+			//element = Driver.findElement(By.xpath("html/body/main/header/div/div/div/div[5]/ul/li[3]/a"));
+			element = Driver.findElement(By.xpath("//*[@class='wishlist']"));
 
 			Log.info("Notification icon is found on the Header on Home Page");
 
@@ -1034,8 +1072,8 @@ public class Home_Page extends BaseClass {
 	public static List<WebElement> headerWishlistUserMenu()throws Exception {
 		try {
 			Log.info("Locating headerWishlistUserMenu elements");
-			webElements = Driver.findElements(By.xpath(".//*[@id='wish-scroller']/ul/li"));
-
+			//webElements = Driver.findElements(By.xpath(".//*[@id='wish-scroller']/ul/li"));
+			webElements = Driver.findElements(By.xpath(".//*[@id='primaryImage']"));
 			Log.info("Wishlist user menu is found on Home Page");
 
 		} catch (Exception e) {

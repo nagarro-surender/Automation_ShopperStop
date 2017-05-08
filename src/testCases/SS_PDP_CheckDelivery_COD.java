@@ -59,8 +59,8 @@ public class SS_PDP_CheckDelivery_COD {
 			HomePage_Action.selectProductCategoryfromMenu(iTestCaseRow);
 			ProductListing_Page.product().click();
 			Log.info("Product icon is clicked");
-			ProductDetails_Page.Product.Product_CODBtn().click();
-			Log.info("Check for COD button is clicked");
+			//ProductDetails_Page.Product.Product_CODBtn().click();
+			//Log.info("Check for COD button is clicked");
 			ProductDetails_Page.Product.PinCode().sendKeys(ExcelUtils.getCellData(iTestCaseRow, Constant.postCode));
 			Log.info("Pin is entered into the text field");
 			ProductDetails_Page.Product.PinCodeCheckBtn().click();

@@ -93,7 +93,7 @@ public class HomePage_Action {
 			BaseClass.errorValidation = BaseClass.errorValidation
 					+ "The Easy Exchange and Returns Link is not present in the Grid Box on Home Page \n";
 		}
-		try {
+/*		try {
 			Log.info("Verification for COD Link on Grid Box");
 			Static_Page.GridBox.CashOnDelivery().click();
 			Thread.sleep(3000);
@@ -106,7 +106,7 @@ public class HomePage_Action {
 			Log.error("Verification check Failed for COD Link on Grid Box");
 			BaseClass.errorValidation = BaseClass.errorValidation
 					+ "The COD Link is not present in the Grid Box on Home Page \n";
-		}
+		}*/
 		if (!BaseClass.errorValidation.isEmpty()) {
 			Log.error("Exception in Class HomePage_Action | Method HomePage_Verify_GridBox_Links");
 			throw new Exception(BaseClass.errorValidation);
@@ -492,8 +492,9 @@ public class HomePage_Action {
 	public static void Header_Private_Verify_Wishlist_Functionality(int iTestCaseRow) throws Exception {
 		try {
 			Log.info("Verification for Wishlist icon functionality in Header");
-			Utils.mouseHover(Home_Page.headerWishlistIcon());
-			Log.info("Wishlist icon hovered successfully");
+			//Utils.mouseHover(Home_Page.headerWishlistIcon());
+			Home_Page.headerWishlistIcon().click();
+			Log.info("Wishlist icon click successfully");
 			if (Home_Page.headerWishlistUserMenu().size() > 0) {
 				Log.info("Verification check done for User specific Wishlist ");
 			} else {
@@ -512,7 +513,6 @@ public class HomePage_Action {
 			throw new Exception(BaseClass.errorValidation);
 		}
 	}
-
 	public static void Header_Public_Verify_Wishlist_Link(int iTestCaseRow) throws Exception {
 		try {
 			Log.info("Verification for Header Wishlist Icon");
@@ -573,6 +573,16 @@ public class HomePage_Action {
 	
 			Utils.verifyElement(Home_Page.headerMiniCartIcon());
 			Log.info("Verification check has been completed for Header Minicart Icon");
+			Utils.verifyElement(Home_Page.headerStoreLocatorIcon());
+			Log.info("Verification check has been completed for HeaderStoreLocator Icon");
+			Utils.verifyElement(Home_Page.Shipping_Icon());
+			Log.info("Verification check has been completed for Header Shipping Icon");
+			Utils.verifyElement(Home_Page.Footer_Section.Exchange_Returns());
+			Log.info("Verification check has been completed for Header Return and Exchange Icon");
+			Utils.verifyElement(Home_Page.ContactUs_Icon());
+			Log.info("Verification check has been completed for Header ContactUs Icon");
+			Utils.verifyElement(Home_Page.ContactUs_Icon());
+			Log.info("Verification check has been completed for Header ContactUs Icon");
 
 			Log.info("Verification for Mini Cart icon functionality in Header");
 			Home_Page.headerMiniCartIcon().click();

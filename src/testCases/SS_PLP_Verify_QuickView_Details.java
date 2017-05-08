@@ -66,8 +66,8 @@ public class SS_PLP_Verify_QuickView_Details {
 		try {
 			HomePage_Action.selectProductCategoryfromMenu(iTestCaseRow);
 			Log.info("Product Listing Page opened");
-			Utils.scrollingToPageElementByCordinate(462, 380);
-			Log.info("Screen scrolled to first product image");
+			//Utils.scrollingToPageElementByCordinate(462, 380);
+			//Log.info("Screen scrolled to first product image");
 			Utils.mouseHover(ProductListing_Page.FirstProductImage());
 			Log.info("Mouse hovered over first product image");
 			ProductListing_Page.ProductQuickViewTag().click();

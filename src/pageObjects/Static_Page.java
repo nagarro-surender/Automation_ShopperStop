@@ -354,7 +354,7 @@ public class Static_Page extends BaseClass {
 		public static WebElement Shipping() throws Exception {
 			try {
 				Log.info("Locating Shipping element");
-				element = Driver.findElement(By.xpath("//ancestor::section[@class='shipping']//a[contains(@href,'shipping')]"));
+				element = Driver.findElement(By.xpath("//*[@title='Shipping']"));
 				Log.info("Shipping link found on Grid Box on Home Page");
 
 			} catch (Exception e) {
@@ -369,7 +369,7 @@ public class Static_Page extends BaseClass {
 		public static WebElement ExchangeAndReturns()throws Exception {
 			try {
 				Log.info("Locating ExchangeAndReturns element");
-				element = Driver.findElement(By.xpath("//ancestor::section[@class='shipping']//a[contains(@href,'returns')]"));
+				element = Driver.findElement(By.xpath("//*[@title='Exchange & Returns']"));
 				Log.info("Exchange and Returns link found on Grid Box on Home Page");
 
 			} catch (Exception e) {

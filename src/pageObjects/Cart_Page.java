@@ -24,8 +24,10 @@ public class Cart_Page extends BaseClass {
 
 		try {
 			Log.info("Locating ContinueShoppingButton element");
+//			element = Driver.findElement(By.xpath(
+//					"//section[@class='shopping-bag-wpr']//div[@class='continue-shopping-btn hidden-xs hidden-sm']//button[@class='btn-continue-shop']"));
 			element = Driver.findElement(By.xpath(
-					"//section[@class='shopping-bag-wpr']//div[@class='continue-shopping-btn hidden-xs hidden-sm']//button[@class='btn-continue-shop']"));
+					"//section[@class='shopping-bag-wpr']//div[@class='continue-shopping-btn hidden-xs hidden-sm']"));
 
 			Log.info("Continue Shopping Button exist on the cart page");
 
@@ -38,7 +40,6 @@ public class Cart_Page extends BaseClass {
 		return element;
 
 	}
-
 	public static WebElement ShoppingBagItemCountDetails() throws Exception {
 
 		try {
@@ -474,10 +475,9 @@ public class Cart_Page extends BaseClass {
 
 		try {
 			Log.info("Locating Checkout button on the cart page");
-		//element = Driver
-			//.findElement(By.xpath("//section[@class='shopping-bag-wpr']//button[@class='btn-place-order']"));
+		element = Driver.findElement(By.xpath("//section[@class='shopping-bag-wpr']//button[@class='btn-place-order']"));
 			
-			element = Driver.findElement(By.xpath("html/body/main/section[2]/div/div/div[2]/div[1]/div[2]/div[1]/div/form/button"));
+			//element = Driver.findElement(By.xpath("html/body/main/section[2]/div/div/div[2]/div[1]/div[2]/div[1]/div/form/button"));
 			
 			              
 
@@ -517,8 +517,10 @@ public class Cart_Page extends BaseClass {
 
 		try {
 			Log.info("Locating Move to wishlist button elements on the cart page");
+	//		elements = Driver.findElements(By.xpath(
+	//				"//section[@class='shopping-bag-wpr']//ul[@class='shop-listing']//div[@class='product-actions']//div[@class='wishlist-acn']/a"));
 			elements = Driver.findElements(By.xpath(
-					"//section[@class='shopping-bag-wpr']//ul[@class='shop-listing']//div[@class='product-actions']//div[@class='wishlist-acn']/a"));
+					" //section[@class='shopping-bag-wpr']//ul[@class='shop-listing']//*[@class='add-to-wishlist']"));
 
 			Log.info("Move to wishlist button elements exist on the cart page");
 
@@ -531,6 +533,7 @@ public class Cart_Page extends BaseClass {
 		return elements;
 
 	}
+
 
 	public static List<WebElement> RemoveProductOnCartPage() throws Exception {
 
@@ -780,6 +783,24 @@ public class Cart_Page extends BaseClass {
 
 	}
 	
+	public static WebElement CheckOutButtonOnMiniCart() throws Exception {
+
+		try {
+			Log.info("Locating checkout button on the minicart page");
+			
+			element = Driver.findElement(
+					By.xpath("//a[contains(@href,'checkout')]"));
+			Log.info("checkout button exist on the Checkout page");
+
+		} catch (Exception e) {
+			Log.error("Exception in Class Cart_Page | Method CheckOutButtonOnMiniCart");
+			Log.error("checkout button does not exist on the Checkout page");
+			throw e;
+		}
+
+		return element;
+
+	}
 	public static WebElement RemoveCouponCodeCartPage() throws Exception {
 
 		try {

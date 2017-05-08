@@ -80,6 +80,8 @@ public class CheckOut_Action {
 			Log.info("Postcode is entered successfully");
 
 			Checkout_Page.DeliveryAddress.city().click();
+			Checkout_Page.DeliveryAddress.Postcode().click();
+			Checkout_Page.DeliveryAddress.city().click();
 
 			//Checkout_Page.DeliveryAddress.TermsandConditionsCheckBox().sendKeys(Keys.PAGE_DOWN);
 			//Thread.sleep(1000);

@@ -23,7 +23,7 @@ public class ProductListing_Page extends BaseClass {
 
 		try {
 			Log.info("Locating Product link on PLP");
-			element = Driver.findElement(By.xpath(".//*[@id='1HashPosition']/a/picture/div/div/div/ul/li/a/img"));
+			element = Driver.findElement(By.xpath(".//*[@id='1HashPosition']"));
 			Log.info("Product link found on PLP");
 
 		} catch (Exception e) {
@@ -727,7 +727,7 @@ public static List<WebElement> DefaultAttributeFilterCategoryContainer()throws E
 					//.xpath("//ul[@id='qv-drop']//li[1]/descendant::div[@class='pro-img']"));
 			
 			element = Driver.findElement(By
-					.xpath(".//*[@id='1HashPosition']/a/picture/div/div/div/ul/li[1]/a/img"));
+					.xpath(".//*[@id='1HashPosition']"));
 			Log.info("Product Image is present on PLP ");
 
 		} catch (Exception e) {

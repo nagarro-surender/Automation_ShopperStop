@@ -99,7 +99,8 @@ public class SS_CheckOut_GuestUser_EmptyField {
 			Cart_Page.CheckoutButton().click();
 			Log.info("Checkout button is clicked on cart page");
 	
-			
+			   Checkout_Page.LoginDetails.ContinueGuestradioButton().click();
+	            Thread.sleep(3000);
 			String userEmail = ExcelUtils.getCellData(iTestCaseRow, Constant.emailId);
 			Checkout_Page.LoginDetails.LoginEmailGuest().sendKeys(userEmail);
 			Log.info("User email id is entered successfully");
